@@ -13,12 +13,12 @@ export default function HomePage({ featuredProduct, newProducts }) {
   
   return (
     <div>
-      
-      <Bg>
+      <p>test</p>
+      {/* <Bg>
       <Header />
       <Featured product={featuredProduct} />
       <NewProducts newProducts={newProducts}/>
-      </Bg>
+      </Bg> */}
     </div>
   );
 }
