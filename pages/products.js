@@ -6,16 +6,19 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import styled from "styled-components";
 
+const ProductsWrapper = styled.div`
+  background-color: #ebe8e8;
+`;
 
 export default function ProductsPage({products}) {
   return (
-    <>
+    <ProductsWrapper>
       <Header />
       <Center>
         <Title>All Products</Title>
         <ProductsGrid products={products} />
       </Center>
-    </>
+    </ProductsWrapper>
   );
 }
 

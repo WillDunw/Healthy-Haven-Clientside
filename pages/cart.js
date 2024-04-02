@@ -8,6 +8,11 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import {Inter, Rubik, Roboto_Mono} from "next/font/google";
+
+const robotoMono = Roboto_Mono({subsets: ["latin"], weight:"500"});
+const inter = Inter({subsets: ["latin"], weight:"500"});
+const rubik = Rubik({subsets:["latin"], weight:"500"});
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -140,21 +145,21 @@ export default function CartPage(props) {
       <Center>
         <ColumnsWrapper>
           <Box>
-            <h2>Cart</h2>
-            {!cartProducts?.length && <div>Your cart is empty</div>}
+            <h2 className={rubik.className}>Cart</h2>
+            {!cartProducts?.length && <div className={inter.className}>Your cart is empty</div>}
             {products?.length > 0 && (
               <Table>
                 <thead>
                   <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th className={robotoMono.className}>Product</th>
+                    <th className={robotoMono.className}>Quantity</th>
+                    <th className={robotoMono.className}>Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   {products.map((product) => (
                     <tr key={product._id}>
-                      <ProductInfoCell>
+                      <ProductInfoCell className={rubik.className}>
                         <ProductImageBox>
                           <img src={product.images[0]} alt="" />
                         </ProductImageBox>
@@ -164,7 +169,7 @@ export default function CartPage(props) {
                         <Button onClick={() => lessOfProduct(product._id)}>
                           -
                         </Button>
-                        <QuantityLabel>
+                        <QuantityLabel className={inter.className}>
                           {
                             cartProducts.filter((id) => id === product._id)
                               .length
@@ -174,17 +179,17 @@ export default function CartPage(props) {
                           +
                         </Button>
                       </td>
-                      <td>
+                      <td className={robotoMono.className}>
                         $
-                        {cartProducts.filter((id) => id === product._id)
-                          .length * product.price}
+                        {(cartProducts.filter((id) => id === product._id)
+                          .length * product.price).toFixed(2)}
                       </td>
                     </tr>
                   ))}
                   <tr>
                     <td></td>
                     <td></td>
-                    <td>${total}</td>
+                    <td className={robotoMono.className}>Total: ${total.toFixed(2)}</td>
                   </tr>
                 </tbody>
               </Table>
@@ -192,7 +197,7 @@ export default function CartPage(props) {
           </Box>
           {!!cartProducts?.length && (
             <Box>
-              <h2>Order Details</h2>
+              <h2 className={rubik.className}>Order Details</h2>
               <Input
                 type="text"
                 placeholder="Name"

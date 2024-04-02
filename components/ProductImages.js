@@ -17,6 +17,7 @@ const BigImageWrapper = styled.div`
 
 const ImageButtons = styled.div`
   display: flex;
+  justify-content:center;
   gap: 10px;
   margin-top: 10px;
 `;
@@ -28,6 +29,7 @@ border-color: #ccc;
 ` : `
 border-color: transparent;
 opacity: 0.6;
+z-index:0;
 `}
 
   height: 50px;

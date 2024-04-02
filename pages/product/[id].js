@@ -10,15 +10,20 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import { useContext } from "react";
 import styled from "styled-components";
+import { Inter, Rubik, Roboto_Mono } from "next/font/google";
+
+const robotoMono = Roboto_Mono({ subsets: ["latin"], weight: "500" });
+const inter = Inter({ subsets: ["latin"], weight: "500" });
+const rubik = Rubik({ subsets: ["latin"], weight: "500" });
 
 const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
   margin: 40px 0;
-  @media screen and (min-width:768px) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: 0.8fr 1.2fr;
-   }
+  }
 `;
 
 const PriceRow = styled.div`
@@ -28,24 +33,45 @@ const PriceRow = styled.div`
 `;
 
 const Price = styled.span`
-    font-size: 1.6rem;
+  font-size: 1.6rem;
+`;
+
+const DetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 75%;
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+const ImagesWrapper = styled.div`
+  width: 60%;
+  margin-left: 25%;
+  min-width:240px;
+
 `;
 
 export default function ProductPage({ product }) {
-    const {addProduct} = useContext(CartContext);
+  const { addProduct } = useContext(CartContext);
   return (
     <>
       <Header />
       <Center>
         <ColumnsWrapper>
-          <WhiteBox>
-            <ProductImages images={product.images} />
-          </WhiteBox>
-          <div>
-            <Title>{product.title}</Title>
-            <p>{product.description}</p>
+          <ImagesWrapper>
+            <WhiteBox>
+              <ProductImages images={product.images} />
+            </WhiteBox>
+          </ImagesWrapper>
+          <DetailsWrapper>
+            <Title className={rubik.className}>{product.title}</Title>
+            <p className={inter.className}>{product.description}</p>
             <PriceRow>
-              <Price>${product.price}</Price>
+              <Price className={robotoMono.className}>
+                ${product.price.toFixed(2)}
+              </Price>
               <div>
                 <Button primary onClick={() => addProduct(product._id)}>
                   <CartIcon />
@@ -53,7 +79,7 @@ export default function ProductPage({ product }) {
                 </Button>
               </div>
             </PriceRow>
-          </div>
+          </DetailsWrapper>
         </ColumnsWrapper>
       </Center>
     </>

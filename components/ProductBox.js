@@ -4,11 +4,18 @@ import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import {Inter, Rubik, Roboto_Mono} from "next/font/google";
 
-const ProductWrapper = styled.div``;
+const robotoMono = Roboto_Mono({subsets: ["latin"], weight:"500"});
+const inter = Inter({subsets: ["latin"], weight:"500"});
+const rubik = Rubik({subsets:["latin"], weight:"500"});
+
+const ProductWrapper = styled.div`
+max-width: 250px;
+`;
 
 const WhiteBox = styled(Link)`
-  background-color: white;
+  background-color: #f4f0f0;
   padding: 20px;
   height: 120px;
   text-align: center;
@@ -24,7 +31,7 @@ const WhiteBox = styled(Link)`
 
 const Title = styled(Link)`
   font-weight: normal;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: inherit;
   text-decoration: none;
   margin: 0;
@@ -45,6 +52,10 @@ const Price = styled.div`
     font-size: 1.5rem;
     font-weight: bold;
     font-weight: 500;
+
+    @media screen and (max-width:945px) {
+      font-size:1.1rem;
+    }
 `;
 
 export default function ProductBox({ _id, title, description, price, images }) {
@@ -58,11 +69,12 @@ export default function ProductBox({ _id, title, description, price, images }) {
         </div>
       </WhiteBox>
       <ProductInfoBox>
-        <Title href={url}>{title}</Title>
+        <Title href={url} className={rubik.className}>{title}</Title>
         <PriceRow>
-          <Price>${price}</Price>
+          <Price className={robotoMono.className}>${price.toFixed(2)}</Price>
           <div>
-            <Button primary outline onClick={() => addProduct(_id)}>
+            <Button className={inter.className} primary outline onClick={() => addProduct(_id)}>
+              Add to cart
               <CartIcon />
             </Button>
           </div>
