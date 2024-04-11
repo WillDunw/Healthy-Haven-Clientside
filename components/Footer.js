@@ -99,8 +99,7 @@ export default function Footer() {
       <AboutWrapper className={inter.className}>
         <p>
           <b>About this site:</b> <br /> This site was made as a personal
-          project and is not the official Healthy Haven website. It is still a
-          work in progress as new features are being added.
+          project and is not the official Healthy Haven website.
         </p>
       </AboutWrapper>
     </FooterWrapper>
