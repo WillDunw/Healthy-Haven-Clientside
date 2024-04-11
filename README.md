@@ -10,6 +10,12 @@ First, make sure you have the packages you need installed:
 
 ```bash
 npm install
+# or
+yarn
+# or
+pnpm install
+# or
+bun install
 ```
 
 Then, run the development server:
