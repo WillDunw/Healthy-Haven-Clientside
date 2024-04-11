@@ -6,7 +6,8 @@ First, make sure you have the packages you need installed:
 
 ```bash
 npm install
-bash```
+
+
 
 Then, run the development server:
 
