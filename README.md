@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Prerequisites:
+
+Make sure you are using Node version 18.x or later.
+
 First, make sure you have the packages you need installed:
 
 ```bash
@@ -19,3 +23,5 @@ pnpm dev
 # or
 bun dev
 ```
+
+And that's it!
